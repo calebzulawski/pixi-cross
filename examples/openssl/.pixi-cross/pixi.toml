@@ -1,0 +1,6 @@
+[package]  # pixi-cross
+name = "cross-metadata"
+
+[package.build]
+backend = { name = "pixi-cross-backend", version = "==0.1.0" }
+source = { path = ".." }

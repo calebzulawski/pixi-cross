@@ -1,0 +1,5 @@
+/target/
+.pixi/
+examples/openssl/pixi.lock
+examples/openssl/openssl-version-linux-*
+examples/openssl/openssl-version-native

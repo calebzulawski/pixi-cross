@@ -1,0 +1,33 @@
+[workspace]
+name = "openssl-example"
+version = "0.1.0"
+channels = ["../../target/channel", "conda-forge"]
+platforms = ["linux-64", "linux-aarch64"]
+preview = ["pixi-build"]
+
+[dependencies]
+pixi-cross = { path = "../../recipes/pixi-cross" }
+
+[tasks]
+build = "make"
+cross = "pixi-cross"
+
+[feature.host.dependencies]
+openssl = "3.*"
+
+[tool.cross.feature.build.dependencies]
+make = "*"
+"{{ compiler('cxx') }}" = "*"
+
+[tool.cross.environments.dev]
+build-features = ["build"]
+host-features = ["host"]
+
+[environments]
+dev = ["build", "host"]  # pixi-cross
+dev-host-dependencies = { features = ["host"], no-default-feature = true }  # pixi-cross
+dev-linux-64 = { dev.cross-dev-linux-64.path = ".pixi-cross" }  # pixi-cross
+dev-linux-aarch64 = { dev.cross-dev-linux-aarch64.path = ".pixi-cross" }  # pixi-cross
+
+[feature.build]  # pixi-cross
+dev.native-build.path = ".pixi-cross"

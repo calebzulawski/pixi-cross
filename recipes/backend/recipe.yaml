@@ -1,0 +1,15 @@
+package:
+  name: pixi-cross-backend
+  version: 0.1.0
+source:
+  path: pixi-cross-backend
+build:
+  number: 0
+  noarch: generic
+  script:
+    - mkdir -p "$PREFIX/bin"
+    - install -m755 pixi-cross-backend "$PREFIX/bin/pixi-cross-backend"
+requirements:
+  run:
+    - pixi-build-api-version >=7,<8
+    - pixi-cross ==0.1.0

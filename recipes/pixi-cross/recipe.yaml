@@ -1,0 +1,18 @@
+package:
+  name: pixi-cross
+  version: 0.1.0
+
+source:
+  path: ../../target/release/pixi-cross
+build:
+  number: 1
+  script:
+    - test "${{ build_platform }}" = "${{ host_platform }}"
+    - mkdir -p "$PREFIX/bin"
+    - install -m755 pixi-cross "$PREFIX/bin/pixi-cross"
+requirements:
+  run:
+    - if: linux
+      then:
+        - __glibc >=2.28
+        - libgcc

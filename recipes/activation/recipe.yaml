@@ -1,0 +1,18 @@
+package:
+  name: pixi-cross-activation
+  version: 0.1.0
+source:
+  path: hooks
+build:
+  number: 1
+  noarch: generic
+  script:
+    - mkdir -p "$PREFIX/etc/conda/activate.d" "$PREFIX/etc/conda/deactivate.d"
+    - cp finish.sh "$PREFIX/etc/conda/activate.d/zzzz-pixi-cross.sh"
+    - cp activate.sh "$PREFIX/etc/conda/activate.d/000-pixi-cross.sh"
+    - cp deactivate.sh "$PREFIX/etc/conda/deactivate.d/000-pixi-cross.sh"
+requirements:
+  run:
+    - __unix
+    - pixi-cross ==0.1.0
+    - pixi-install-to-prefix >=0.1.8

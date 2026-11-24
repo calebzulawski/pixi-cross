@@ -1,0 +1,23 @@
+[package]
+name = "pixi-cross"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Generate Pixi development environments for conda-forge cross-compilers"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+jsonrpc-core = "18"
+pixi_build_types = { git = "https://github.com/prefix-dev/pixi", tag = "v0.83.0" }
+# Match Pixi 0.83's rattler_conda_types interface.
+rattler_build_jinja = "=0.1.19"
+rattler_conda_types = { version = "0.56", default-features = false }
+rattler_digest = { version = "2.1", features = ["serde"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_with = "3"
+tempfile = "3"
+toml = { version = "1", features = ["preserve_order"] }
+toml_edit = "0.25"
+url = "2"
